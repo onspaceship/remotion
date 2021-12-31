@@ -1,11 +1,4 @@
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from 'remix'
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from 'remix'
 import type { MetaFunction } from 'remix'
 
 export const meta: MetaFunction = () => {

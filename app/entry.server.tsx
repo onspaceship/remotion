@@ -1,5 +1,4 @@
-process.env.NODE_ENV != 'production' &&
-  require('dotenv-flow').config({ silent: true })
+process.env.NODE_ENV != 'production' && require('dotenv-flow').config({ silent: true })
 
 import { renderToString } from 'react-dom/server'
 import { RemixServer } from 'remix'
@@ -11,9 +10,7 @@ export default function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  const markup = renderToString(
-    <RemixServer context={remixContext} url={request.url} />
-  )
+  const markup = renderToString(<RemixServer context={remixContext} url={request.url} />)
 
   responseHeaders.set('Content-Type', 'text/html')
 
