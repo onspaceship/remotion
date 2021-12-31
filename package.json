@@ -9,7 +9,7 @@
     "start": "remix-serve build"
   },
   "dependencies": {
-    "@notionhq/client": "^0.4.11",
+    "@notionhq/client": "0.4.10",
     "@remix-run/react": "^1.1.1",
     "@remix-run/serve": "^1.1.1",
     "react": "^17.0.2",
