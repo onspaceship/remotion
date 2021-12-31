@@ -9,21 +9,18 @@ interface LoaderData {
   blocks: ListBlockChildrenResponse
 }
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ params }) => {
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
   })
 
-  // return await notion.search({})
-  // return await notion.search({ query: '01f1029409dd41448ad4d2d83c2e2077' })
-
   return {
     page: await notion.pages.retrieve({
-      page_id: process.env.NOTION_ENTRY_PAGE_ID!,
+      page_id: params.id ?? process.env.NOTION_ENTRY_PAGE_ID!,
     }),
 
     blocks: await notion.blocks.children.list({
-      block_id: process.env.NOTION_ENTRY_PAGE_ID!,
+      block_id: params.id ?? process.env.NOTION_ENTRY_PAGE_ID!,
     }),
   }
 }
