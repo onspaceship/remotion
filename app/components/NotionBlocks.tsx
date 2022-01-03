@@ -26,7 +26,7 @@ export default function NotionBlocks({ blocks }: { blocks: GetBlockResponse[] })
         }
       })}
 
-      <pre className="whitespace-pre-wrap">{JSON.stringify(blocks, null, 2)}</pre>
+      {/* <pre className="whitespace-pre-wrap">{JSON.stringify(blocks, null, 2)}</pre> */}
     </article>
   )
 }

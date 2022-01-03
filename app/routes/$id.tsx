@@ -15,6 +15,8 @@ export const loader: LoaderFunction = async ({ params }) => {
     auth: process.env.NOTION_TOKEN,
   })
 
+  console.log(params)
+
   return {
     page: await notion.pages.retrieve({
       page_id: params.id ?? process.env.NOTION_ENTRY_PAGE_ID!,

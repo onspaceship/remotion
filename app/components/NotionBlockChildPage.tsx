@@ -6,7 +6,7 @@ export default function NotionBlockChildPage({ block }: { block: GetBlockRespons
 
   return (
     <div>
-      <Link to={block.id}>{block.child_page.title}</Link>
+      <Link to={`/${block.id}`}>{block.child_page.title}</Link>
     </div>
   )
 }

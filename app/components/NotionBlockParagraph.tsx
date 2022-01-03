@@ -7,8 +7,10 @@ export default function NotionBlockParagraph({ block }: { block: GetBlockRespons
   return (
     <p>
       {block.paragraph.text.map((text, i) => {
+        const Comp = text.href ? 'a' : 'span'
+
         return (
-          <span
+          <Comp
             key={i}
             className={clsx(
               text.annotations.bold && 'font-bold',
@@ -17,9 +19,10 @@ export default function NotionBlockParagraph({ block }: { block: GetBlockRespons
               text.annotations.underline && 'underline',
               text.annotations.code && 'font-mono'
             )}
+            href={text.href ?? ''}
           >
             {text.plain_text}
-          </span>
+          </Comp>
         )
       })}
     </p>
