@@ -2,6 +2,7 @@ import { LoaderFunction, MetaFunction, useLoaderData } from 'remix'
 import { Client } from '@notionhq/client'
 import { GetPageResponse, ListBlockChildrenResponse } from '@notionhq/client/build/src/api-endpoints'
 
+import NotionHeader from '~/components/NotionHeader'
 import NotionBlocks from '~/components/NotionBlocks'
 
 interface LoaderData {
@@ -34,5 +35,10 @@ export const meta: MetaFunction = ({ data: { page } }: { data: LoaderData }) => 
 export default function Index() {
   const data = useLoaderData<LoaderData>()
 
-  return <NotionBlocks blocks={data.blocks.results} />
+  return (
+    <>
+      <NotionHeader page={data.page} />
+      <NotionBlocks blocks={data.blocks.results} />
+    </>
+  )
 }
