@@ -15,9 +15,6 @@ export const loader: LoaderFunction = async () => {
     auth: process.env.NOTION_TOKEN,
   })
 
-  // return await notion.search({})
-  // return await notion.search({ query: '01f1029409dd41448ad4d2d83c2e2077' })
-
   return {
     page: await notion.pages.retrieve({
       page_id: process.env.NOTION_ENTRY_PAGE_ID!,
