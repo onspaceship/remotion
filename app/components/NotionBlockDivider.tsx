@@ -1,3 +1,3 @@
 export default function NotionBlockDivider() {
-  return <hr />
+  return <hr className="bg-gray-100" />
 }
