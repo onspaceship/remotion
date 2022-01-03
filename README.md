@@ -1,53 +1,22 @@
-# Welcome to Remix!
+<p align="center">
+  <img src="https://static.onspaceship.com/FullColor.svg" width="100">
+</p>
 
-- [Remix Docs](https://remix.run/docs)
+<p align="center">
+  <em>Brought to you by <a href="https://spaceship.run/">Spaceship</a></em>
+</p>
 
-## Development
+# Remotion
 
-From your terminal:
+Power your [Remix](https://remix.run/) site with data from [Notion](https://www.notion.so/)
 
-```sh
-npm run dev
-```
+## Configuration
 
-This starts your app in development mode, rebuilding assets on file changes.
+Remotion is configured by environment variables.
 
-## Deployment
+- `NOTION_TOKEN` - This is a token you'll get from the Notion developer site. Go [create an Integration](https://www.notion.so/my-integrations) (it can be internal) and a token will be generated for you.
+- `NOTION_ENTRY_PAGE_ID` - This is the default page for the index of the site. This is the random set of characters at the end of any page's URL.
 
-First, build your app for production:
+In development (`npm run dev`), you can create a `.env` file in the project root to set these values.
 
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+You'll also need to share your pages with the integration directly. You can do this from the Share button at the top of any page and you'll invite your integration to the page.

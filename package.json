@@ -1,6 +1,6 @@
 {
   "name": "remotion",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "build": "tailwindcss -o ./app/tailwind.css && remix build",
