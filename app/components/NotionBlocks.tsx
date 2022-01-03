@@ -1,6 +1,7 @@
 import { GetBlockResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import NotionBlockChildPage from './NotionBlockChildPage'
+import NotionBlockCode from './NotionBlockCode'
 import NotionBlockDivider from './NotionBlockDivider'
 import NotionBlockHeading from './NotionBlockHeading'
 import NotionBlockImage from './NotionBlockImage'
@@ -41,12 +42,14 @@ export default function NotionBlocks({ blocks }: { blocks: GetBlockResponse[] })
             return <NotionBlockImage key={block.id} block={block} />
           case 'divider':
             return <NotionBlockDivider key={block.id} />
+          case 'code':
+            return <NotionBlockCode key={block.id} block={block} />
           case 'child_page':
             return <NotionBlockChildPage key={block.id} block={block} />
         }
       })}
 
-      <pre className="whitespace-pre-wrap">{JSON.stringify(blocks, null, 2)}</pre>
+      {/* <pre className="whitespace-pre-wrap">{JSON.stringify(blocks, null, 2)}</pre> */}
     </article>
   )
 }
