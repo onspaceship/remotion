@@ -2,11 +2,28 @@ import { GetBlockResponse } from '@notionhq/client/build/src/api-endpoints'
 import clsx from 'clsx'
 
 export default function NotionBlockParagraph({ block }: { block: GetBlockResponse }) {
-  if (block.type != 'paragraph') return null
+  let text
+
+  if (block.type == 'paragraph') {
+    text = block.paragraph.text
+  } else if (block.type == 'quote') {
+    text = block.quote.text
+  } else if (block.type == 'callout') {
+    text = block.callout.text
+  } else return null
 
   return (
-    <p className="min-h-[1px]">
-      {block.paragraph.text.map((text, i) => {
+    <p
+      className={clsx(
+        'min-h-[1px] relative',
+        block.type == 'quote' && 'pl-3 border-l-[3px] border-black',
+        block.type == 'callout' && 'p-4 pl-12 bg-neutral-100'
+      )}
+    >
+      {block.type == 'callout' && (
+        <div className="absolute top-4 left-4">{block.callout.icon?.type == 'emoji' && block.callout.icon.emoji}</div>
+      )}
+      {text.map((text, i) => {
         const Comp = text.href ? 'a' : 'span'
 
         return (

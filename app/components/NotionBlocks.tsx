@@ -17,6 +17,8 @@ export default function NotionBlocks({ blocks }: { blocks: GetBlockResponse[] })
 
         switch (block.type) {
           case 'paragraph':
+          case 'quote':
+          case 'callout':
             return <NotionBlockParagraph key={block.id} block={block} />
           case 'heading_1':
           case 'heading_2':
