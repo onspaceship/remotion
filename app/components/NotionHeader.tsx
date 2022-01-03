@@ -1,8 +1,18 @@
 import { GetPageResponse } from '@notionhq/client/build/src/api-endpoints'
+import { Link } from 'remix'
 
-export default function NotionHeader({ page }: { page: GetPageResponse }) {
+export default function NotionHeader({ page, child }: { page: GetPageResponse; child?: boolean }) {
   return (
     <>
+      <div className="px-4 py-2 w-full flex justify-between">
+        <div>
+          {child && page.parent.type == 'page_id' && <Link to={`/${page.parent.page_id}`}>Back to parent page</Link>}
+        </div>
+        <a href={page.url} className="px-2 py-1 hover:bg-gray-100">
+          <img src="/notion.svg" className="h-4 inline-block relative top-[-1px]" /> Open in Notion
+        </a>
+      </div>
+
       {page.cover ? (
         <div className="h-64 overflow-hidden relative">
           <img

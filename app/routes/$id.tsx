@@ -8,14 +8,13 @@ import NotionBlocks from '~/components/NotionBlocks'
 interface LoaderData {
   page: GetPageResponse
   blocks: ListBlockChildrenResponse
+  entryPageId?: string
 }
 
 export const loader: LoaderFunction = async ({ params }) => {
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
   })
-
-  console.log(params)
 
   return {
     page: await notion.pages.retrieve({
@@ -25,6 +24,8 @@ export const loader: LoaderFunction = async ({ params }) => {
     blocks: await notion.blocks.children.list({
       block_id: params.id ?? process.env.NOTION_ENTRY_PAGE_ID!,
     }),
+
+    entryPageId: process.env.NOTION_ENTRY_PAGE_ID,
   }
 }
 
@@ -39,7 +40,7 @@ export default function Index() {
 
   return (
     <>
-      <NotionHeader page={data.page} />
+      <NotionHeader page={data.page} child={data.page.id != data.entryPageId} />
       <NotionBlocks blocks={data.blocks.results} />
     </>
   )
