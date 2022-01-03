@@ -5,7 +5,7 @@ export default function NotionBlockParagraph({ block }: { block: GetBlockRespons
   if (block.type != 'paragraph') return null
 
   return (
-    <p>
+    <p className="min-h-[1px]">
       {block.paragraph.text.map((text, i) => {
         const Comp = text.href ? 'a' : 'span'
 
@@ -21,7 +21,9 @@ export default function NotionBlockParagraph({ block }: { block: GetBlockRespons
             )}
             href={text.href ?? ''}
           >
-            {text.plain_text}
+            {text.plain_text
+              .split(/(\r\n|\r|\n)/g)
+              .map((line, i) => (line.match(/(\r\n|\r|\n)/g) ? <br key={i} /> : line))}
           </Comp>
         )
       })}
