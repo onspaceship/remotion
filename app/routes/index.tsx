@@ -5,9 +5,10 @@ import { GetPageResponse, ListBlockChildrenResponse } from '@notionhq/client/bui
 import NotionHeader from '~/components/NotionHeader'
 import NotionBlocks from '~/components/NotionBlocks'
 
-interface LoaderData {
+export interface LoaderData {
   page: GetPageResponse
   blocks: ListBlockChildrenResponse
+  entryPageId?: string
 }
 
 export const loader: LoaderFunction = async () => {
@@ -23,6 +24,8 @@ export const loader: LoaderFunction = async () => {
     blocks: await notion.blocks.children.list({
       block_id: process.env.NOTION_ENTRY_PAGE_ID!,
     }),
+
+    entryPageId: process.env.NOTION_ENTRY_PAGE_ID,
   }
 }
 
